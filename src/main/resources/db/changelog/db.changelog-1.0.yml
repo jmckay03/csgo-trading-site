@@ -9,7 +9,7 @@ databaseChangeLog:
       dbms: h2, mysql
       id : USER-CREATE
       author: Jeff
-      sql: CREATE TABLE STEAMUSER_ENTITY  (
+      sql: CREATE TABLE STEAM_USER_ENTITY  (
         STEAM_ID char(100) NOT NULL PRIMARY KEY ,
         PERSONA_NAME varchar(100)
         ) ENGINE=InnoDB;

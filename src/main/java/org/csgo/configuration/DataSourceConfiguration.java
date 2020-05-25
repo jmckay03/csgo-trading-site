@@ -5,8 +5,8 @@
  */
 package org.csgo.configuration;
 
-import com.zaxxer.hikari.HikariDataSource;
 import org.csgo.configuration.properties.DataSourceProperties;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"org.csgo.repository.entity"}, //
+@EnableJpaRepositories(basePackages = {"org.csgo.repository"}, //
         entityManagerFactoryRef = "entitiesManagerFactory", //
         transactionManagerRef = "entitiesTransactionManager")
 @EnableConfigurationProperties(value = {DataSourceProperties.class})
@@ -67,7 +67,7 @@ public class DataSourceConfiguration {
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return new EntityManagerFactoryBuilder(new HibernateJpaVendorAdapter(), properties, null) //
                 .dataSource(entitiesDataSource) //
-                .packages("com.csgo.repository.entity").build();
+                .packages("org.csgo.repository.entity").build();
     }
 
 }

@@ -10,7 +10,7 @@ import org.csgo.model.SteamUserPlayers;
 import org.csgo.model.SteamUserResponse;
 import org.csgo.model.User;
 import org.csgo.repository.SteamUserRepository;
-import org.csgo.repository.entity.SteamUser;
+import org.csgo.repository.entity.SteamUserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
     private static final Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
     @Autowired
-    SteamUserRepository steamUserRepository;
+    private SteamUserRepository steamUserRepository;
 
     Gson gson = new Gson();
 
@@ -66,8 +66,9 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
         SteamUserResponse steamUserResponse = gson.fromJson(responseEntity.getBody(), SteamUserResponse.class);
         SteamUserPlayers steamUserPlayers = gson.fromJson(steamUserResponse.getResponse().toString(), SteamUserPlayers.class);
         String steamUserStr = gson.toJson(steamUserPlayers.getPlayers().get(0));
-        SteamUser steamUser = gson.fromJson(steamUserStr, SteamUser.class);
-        steamUserRepository.save(steamUser); //test
-        //TODO fix JPA
+        System.out.println(steamUserStr);
+        SteamUserEntity steamUserEntity = gson.fromJson(steamUserStr, SteamUserEntity.class);
+        System.out.println(steamUserEntity.getPersonaname());
+        steamUserRepository.save(steamUserEntity); //test
     }
 }
