@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
     <meta charset="UTF-8"/>
-    <title>CSGO Trade</title>
-    <link href="/css/app.css" rel="stylesheet">
+    <title>Csgo Trade</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
-<header>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">CSGO Trades</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/welcome">Home</a></li>
+            <li><a href="#">My Trades</a></li>
+            <li><a href="#">Inventory</a></li>
+            <li><a href="#">Search</a></li>
+        </ul>
+    </div>
+</nav>
 <div class="overlay">
-    <h1>CSGO Trading</h1>
-    <h3>The ultimate place to trade your skins.</h3>
-    <p>Welcome to the easiest method to trade in your csgo stats!</p>
-    <br></br>
+
     <h3 th:text="${name}">Profile name</h3>
 
 
