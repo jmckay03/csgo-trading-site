@@ -3,3 +3,18 @@ spring:
     active: default
 server:
   port: 8080
+
+
+security:
+  oauth2:
+    client:
+      registration:
+        steam:
+          web-key: 88721AB6DB5DA8E1384A8DB9B493690C
+          issuer-uri: https://steamcommunity.com/openid
+          domain-name: localhost:8080/
+          login-page: /
+          logout-page: /
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
