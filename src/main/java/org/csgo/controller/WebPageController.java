@@ -2,8 +2,6 @@ package org.csgo.controller;
 
 
 
-import org.csgo.model.User;
-import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -5,9 +5,15 @@
  */
 package org.csgo.service;
 
+import com.google.gson.Gson;
+import org.csgo.model.SteamUserPlayers;
+import org.csgo.model.SteamUserResponse;
 import org.csgo.model.User;
+import org.csgo.repository.SteamUserRepository;
+import org.csgo.repository.entity.SteamUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,8 +29,7 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
 
     private static final Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-    //@Autowired
-    //SteamUserRepository steamUserRepository;
+    Gson gson = new Gson();
 
     String web_key = "88721AB6DB5DA8E1384A8DB9B493690C";
 
@@ -32,6 +37,7 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
     public UserDetails loadUserDetails(OpenIDAuthenticationToken token) throws UsernameNotFoundException {
 
         log.info("Loading user details ...");
+
         User user = new User();
 
         try {
@@ -56,7 +62,9 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
                 + "&steamids=" + token;
         System.out.println(url);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        System.out.println(responseEntity.getBody().toString());
-
+        SteamUserResponse steamUserResponse = gson.fromJson(responseEntity.getBody(), SteamUserResponse.class);
+        SteamUserPlayers steamUserPlayers = gson.fromJson(steamUserResponse.getResponse().toString(), SteamUserPlayers.class);
+        SteamUser steamUser = gson.fromJson(steamUserPlayers.getPlayers().get(0).toString(), SteamUser.class);
+        //TODO fix JPA
     }
 }

@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: default
+  main:
+    allow-bean-definition-overriding: true
+  h2:
+    console:
+      enabled: true
 server:
   port: 8080
 

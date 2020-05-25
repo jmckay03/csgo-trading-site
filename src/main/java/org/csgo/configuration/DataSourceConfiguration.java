@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"org.csgo.repository"}, //
+@EnableJpaRepositories(basePackages = {"org.csgo.repository.entity"}, //
         entityManagerFactoryRef = "entitiesManagerFactory", //
         transactionManagerRef = "entitiesTransactionManager")
 @EnableConfigurationProperties(value = {DataSourceProperties.class})
@@ -67,7 +67,7 @@ public class DataSourceConfiguration {
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         return new EntityManagerFactoryBuilder(new HibernateJpaVendorAdapter(), properties, null) //
                 .dataSource(entitiesDataSource) //
-                .packages("com.lmig.it.grs.repository.entity").build();
+                .packages("com.csgo.repository.entity").build();
     }
 
 }
