@@ -29,6 +29,9 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
 
     private static final Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
+    @Autowired
+    SteamUserRepository steamUserRepository;
+
     Gson gson = new Gson();
 
     String web_key = "88721AB6DB5DA8E1384A8DB9B493690C";
@@ -44,10 +47,8 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
             //You can find user by the token...
             log.info("Finding user by token " + token.getName());
             findSteamUserInfo(token.getName());
-
-            //steamUserRepository.save()
         } catch (RuntimeException e) {
-            log.error("Runtime excetion");
+            log.error("Runtime exception");
         }
         return user;
     }
@@ -64,7 +65,9 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         SteamUserResponse steamUserResponse = gson.fromJson(responseEntity.getBody(), SteamUserResponse.class);
         SteamUserPlayers steamUserPlayers = gson.fromJson(steamUserResponse.getResponse().toString(), SteamUserPlayers.class);
-        SteamUser steamUser = gson.fromJson(steamUserPlayers.getPlayers().get(0).toString(), SteamUser.class);
+        String steamUserStr = gson.toJson(steamUserPlayers.getPlayers().get(0));
+        SteamUser steamUser = gson.fromJson(steamUserStr, SteamUser.class);
+        steamUserRepository.save(steamUser); //test
         //TODO fix JPA
     }
 }
