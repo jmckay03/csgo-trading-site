@@ -2,8 +2,13 @@ package org.csgo.controller;
 
 
 
+import org.csgo.model.User;
+import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.security.Principal;
 
 
 /**
@@ -18,9 +23,14 @@ public class WebPageController {
         return "index";
     }
 
-    @GetMapping("/signIn")
-    public String getSignInThroughSteam() {
+    @GetMapping("/welcome")
+    public String profile(Principal principal, ModelMap model) {
 
-        return "Security";
+        if (principal != null) {
+            model.addAttribute("name", principal.getName());
+            System.out.println(principal.getName());
+        }
+        return "welcome";
     }
+
 }

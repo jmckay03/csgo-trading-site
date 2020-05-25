@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>CSGO Trade</title>
@@ -12,8 +12,20 @@
     <h3>The ultimate place to trade your skins.</h3>
     <p>Welcome to the easiest method to trade in your csgo stats!</p>
     <br></br>
-    <a href="/LoginServlet">
-    <img src="https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png">
+
+    <nav sec:authorize="isAnonymous()">
+        <ul class="member-actions">
+            <form name="form" th:action="@{/login/openid}" method="post">
+
+                <div id="openid_input_area">
+                    <input id="openid_identifier" name="openid_identifier" type="hidden"
+                           value="http://steamcommunity.com/openid"/>
+                    <input id="openid_submit" type="image" th:src="@{https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png}"/>
+                </div>
+
+            </form>
+        </ul>
+    </nav>
 
 </div>
 </header>
