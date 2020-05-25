@@ -13,6 +13,8 @@ logging:
   level:
     org.springframework.web.client.RestTemplate: DEBUG
 
+
+
 db:
   rds:
     url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_ON_EXIT=FALSE
