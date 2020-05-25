@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: VERSION-01-TAG
+      author: Jeff
+      tagDatabase:
+        tag: Version-1.0
+
+  - changeSet:
+      dbms: h2, mysql
+      id : USER-CREATE
+      author: Jeff
+      sql: CREATE TABLE USER_ENTITY  (
+        UUID char(100) NOT NULL PRIMARY KEY ,
+        Name varchar(100)
+        ) ENGINE=InnoDB;
+
+      comment: Initial create of the user table

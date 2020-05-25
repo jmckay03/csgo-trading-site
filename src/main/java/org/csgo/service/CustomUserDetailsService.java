@@ -6,8 +6,10 @@
 package org.csgo.service;
 
 import org.csgo.model.User;
+import org.csgo.repository.SteamUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +20,9 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements AuthenticationUserDetailsService<OpenIDAuthenticationToken> {
 
     private static final Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
+
+    @Autowired
+    SteamUserRepository steamUserRepository;
 
 
     @Override
@@ -30,6 +35,8 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
         try {
             //You can find user by the token...
             log.info("Finding user by token " + token.getName());
+
+            //steamUserRepository.save()
         } catch (RuntimeException e) {
             log.error("Runtime excetion");
         }
