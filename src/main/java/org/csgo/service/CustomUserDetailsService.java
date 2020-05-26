@@ -40,20 +40,22 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
     public UserDetails loadUserDetails(OpenIDAuthenticationToken token) throws UsernameNotFoundException {
 
         log.info("Loading user details ...");
-
         User user = new User();
 
         try {
             //You can find user by the token...
             log.info("Finding user by token " + token.getName());
-            findSteamUserInfo(token.getName());
+            SteamUserEntity steamUserEntity = findSteamUserInfo(token.getName());
+            user.setSteamNickname(steamUserEntity.getPersonaname());
+            user.setId(Long.parseLong(steamUserEntity.getSteamid()));
         } catch (RuntimeException e) {
             log.error("Runtime exception");
+            return null;
         }
         return user;
     }
 
-    public void findSteamUserInfo(String token) {
+    public SteamUserEntity findSteamUserInfo(String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.valueOf("text/html; charset=UTF-8"));
@@ -61,14 +63,12 @@ public class CustomUserDetailsService implements AuthenticationUserDetailsServic
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + web_key
                 + "&steamids=" + token;
-        System.out.println(url);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         SteamUserResponse steamUserResponse = gson.fromJson(responseEntity.getBody(), SteamUserResponse.class);
         SteamUserPlayers steamUserPlayers = gson.fromJson(steamUserResponse.getResponse().toString(), SteamUserPlayers.class);
         String steamUserStr = gson.toJson(steamUserPlayers.getPlayers().get(0));
-        System.out.println(steamUserStr);
         SteamUserEntity steamUserEntity = gson.fromJson(steamUserStr, SteamUserEntity.class);
-        System.out.println(steamUserEntity.getPersonaname());
         steamUserRepository.save(steamUserEntity); //test
+        return steamUserEntity;
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>Csgo Trade</title>
@@ -16,6 +16,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="/welcome">Home</a></li>
+            <li><a href="#">Current Trades</a></li>
             <li><a href="#">My Trades</a></li>
             <li><a href="#">Inventory</a></li>
             <li><a href="#">Search</a></li>
@@ -24,7 +25,9 @@
 </nav>
 <div class="overlay">
 
-    <h3 th:text="${name}">Profile name</h3>
+    <center> <h2> Welcome, [[${name}]]!</h2> </center>
+    <center> <h3>You have been successfully authenticated!</h3> </center>
+    <p>To do add stuff.... make css better</p>
 
 
 </div>
