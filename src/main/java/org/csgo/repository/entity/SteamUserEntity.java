@@ -39,5 +39,139 @@ public class SteamUserEntity implements Serializable {
     private String locstatecode;
     private String loccityid;
 
+    public String getSteamid() {
+        return steamid;
+    }
 
+    public void setSteamid(String steamid) {
+        this.steamid = steamid;
+    }
+
+    public String getCommunityvisibilitystate() {
+        return communityvisibilitystate;
+    }
+
+    public void setCommunityvisibilitystate(String communityvisibilitystate) {
+        this.communityvisibilitystate = communityvisibilitystate;
+    }
+
+    public Integer getProfilestate() {
+        return profilestate;
+    }
+
+    public void setProfilestate(Integer profilestate) {
+        this.profilestate = profilestate;
+    }
+
+    public String getPersonaname() {
+        return personaname;
+    }
+
+    public void setPersonaname(String personaname) {
+        this.personaname = personaname;
+    }
+
+    public String getProfileurl() {
+        return profileurl;
+    }
+
+    public void setProfileurl(String profileurl) {
+        this.profileurl = profileurl;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatarmedium() {
+        return avatarmedium;
+    }
+
+    public void setAvatarmedium(String avatarmedium) {
+        this.avatarmedium = avatarmedium;
+    }
+
+    public String getAvatarfull() {
+        return avatarfull;
+    }
+
+    public void setAvatarfull(String avatarfull) {
+        this.avatarfull = avatarfull;
+    }
+
+    public String getAvatarhash() {
+        return avatarhash;
+    }
+
+    public void setAvatarhash(String avatarhash) {
+        this.avatarhash = avatarhash;
+    }
+
+    public String getLastlogoff() {
+        return lastlogoff;
+    }
+
+    public void setLastlogoff(String lastlogoff) {
+        this.lastlogoff = lastlogoff;
+    }
+
+    public Integer getPersonastate() {
+        return personastate;
+    }
+
+    public void setPersonastate(Integer personastate) {
+        this.personastate = personastate;
+    }
+
+    public String getPrimaryclanid() {
+        return primaryclanid;
+    }
+
+    public void setPrimaryclanid(String primaryclanid) {
+        this.primaryclanid = primaryclanid;
+    }
+
+    public Long getTimecreated() {
+        return timecreated;
+    }
+
+    public void setTimecreated(Long timecreated) {
+        this.timecreated = timecreated;
+    }
+
+    public String getLoccountrycode() {
+        return loccountrycode;
+    }
+
+    public void setLoccountrycode(String loccountrycode) {
+        this.loccountrycode = loccountrycode;
+    }
+
+    public String getLocstatecode() {
+        return locstatecode;
+    }
+
+    public void setLocstatecode(String locstatecode) {
+        this.locstatecode = locstatecode;
+    }
+
+    public String getLoccityid() {
+        return loccityid;
+    }
+
+    public void setLoccityid(String loccityid) {
+        this.loccityid = loccityid;
+    }
 }

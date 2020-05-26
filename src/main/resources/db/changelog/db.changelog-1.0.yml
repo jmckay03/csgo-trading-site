@@ -10,8 +10,23 @@ databaseChangeLog:
       id : USER-CREATE
       author: Jeff
       sql: CREATE TABLE STEAM_USER_ENTITY  (
-        STEAM_ID char(100) NOT NULL PRIMARY KEY ,
-        PERSONA_NAME varchar(100)
+        STEAMID char(100) NOT NULL PRIMARY KEY ,
+        communityvisibilitystate char(100),
+        profilestate char(1),
+        AVATAR char(100),
+        avatarmedium char(100),
+        avatarfull char(100),
+        avatarhash char(100),
+        PERSONANAME varchar(100),
+        profileurl char(100),
+        realname char(100),
+        personastate char(1),
+        primaryclanid char(100),
+        timecreated char(50),
+        loccountrycode char(10),
+        locstatecode char(6),
+        loccityid char(25),
+        lastlogoff char(50)
         ) ENGINE=InnoDB;
 
       comment: Initial create of the user table
