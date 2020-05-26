@@ -13,7 +13,7 @@ public class SteamService {
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
 
     //Cache if called every hour...
-    public void steamCacheInventory(String steamId){
+    public void steamCacheInventory(){
 
     }
 
