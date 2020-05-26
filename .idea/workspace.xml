@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4ac22258-ad09-4927-b764-c052380e2bb9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/controller/WebPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/controller/WebPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/service/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/welcome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/controller/BackEndService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/controller/BackEndService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/controller/WebPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/controller/WebPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/model/UserOpenIds.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/model/UserOpenIds.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/service/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/service/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/welcome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,11 +38,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -109,7 +106,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/configuration/DataSourceConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamUserEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/SteamUserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-1.0.yml" />
@@ -117,6 +113,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/welcome.html" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/service/CustomUserDetailsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java" />
       </list>
     </option>
   </component>
@@ -181,22 +178,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="csgo" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csgo-trading-site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csgo-trading-site" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="csgo-trading-site" type="b2602c69:ProjectViewProjectNode" />
-              <item name="csgo-trading-site" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="changelog" type="462c0819:PsiDirectoryNode" />
+              <item name="configuration" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -213,7 +195,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590462949320" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590497313500" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ez-stats" />
   </component>
   <component name="RecentsManager">
@@ -423,12 +405,12 @@
       <updated>1590357687041</updated>
       <workItem from="1590357688264" duration="2279000" />
       <workItem from="1590360627539" duration="18407000" />
-      <workItem from="1590459308516" duration="3464000" />
+      <workItem from="1590459308516" duration="4260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28042000" />
+    <option name="totallyTimeSpent" value="28838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
@@ -453,7 +435,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -575,16 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="46" column="18" lean-forward="true" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding>
-            <element signature="imports" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -726,6 +698,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/configuration/SecurityWebConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
         </state>
       </provider>
     </entry>
