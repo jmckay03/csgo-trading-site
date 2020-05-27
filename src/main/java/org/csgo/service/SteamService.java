@@ -5,6 +5,7 @@
  */
 package org.csgo.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.csgo.repository.entity.SteamInventoryAll;
 import org.csgo.repository.entity.SteamInventoryItem;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
 
 @Service
 public class SteamService {
@@ -20,10 +23,10 @@ public class SteamService {
 
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
 
-    private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/";
+    private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes&no_prices=true";
 
     //Cache if called every hour...
-    public void steamCacheInventory(){
+    public void steamCacheInventory() throws Exception{
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -32,13 +35,16 @@ public class SteamService {
         RestTemplate restTemplate = new RestTemplate();
         //Coming in as an object....
         ResponseEntity<SteamInventoryAll> responseEntity = restTemplate.exchange(csgoBackpackUrl, HttpMethod.GET, entity, SteamInventoryAll.class);
-        System.out.println(responseEntity.getBody().getItemsList());
 
-        //for (int i = 0; i < responseEntity.getBody().getItemsList().size(); i++) {
-          //  SteamInventoryItem steamInventoryItem = gson.fromJson(responseEntity.getBody().getItemsList().get(i).toString(), SteamInventoryItem.class);
-         //   System.out.println(steamInventoryItem.getName());
-        //}
+       // System.out.println(responseEntity.getBody().getItemsList());
 
+        Iterator iterator = responseEntity.getBody().getItemsList().iterator();
+
+        while (iterator.hasNext()) {
+            SteamInventoryItem steamInventoryItem = gson.fromJson(iterator.next().toString(), SteamInventoryItem.class);
+            System.out.println(steamInventoryItem.getName() + " " + steamInventoryItem.getClassid());
+            //System.out.println(iterator.next().toString());
+        }
     }
 
     public void steamPriceCheckAllInventory(String steamId){
