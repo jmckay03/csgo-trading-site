@@ -2,15 +2,16 @@ package org.csgo.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.JsonObject;
 
 import java.io.Serializable;
 
-public class SteamInventoryItem implements Serializable{
+public class SteamInventoryItemFromApi implements Serializable{
     private String name;
     private String classid;
     private String icon_url;
     @JsonProperty("price")
-    private SteamInventoryPriceTime price;
+    private JsonObject price;
 
     public String getName() {
         return name;
@@ -36,11 +37,11 @@ public class SteamInventoryItem implements Serializable{
         this.icon_url = icon_url;
     }
 
-    public SteamInventoryPriceTime getPrice() {
+    public JsonObject getPrice() {
         return price;
     }
 
-    public void setPrice(SteamInventoryPriceTime price) {
+    public void setPrice(JsonObject price) {
         this.price = price;
     }
 }

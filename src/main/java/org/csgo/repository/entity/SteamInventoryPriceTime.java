@@ -6,46 +6,47 @@
 package org.csgo.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.JsonObject;
 
 public class SteamInventoryPriceTime {
     @JsonProperty("24_hours")
-    private SteamInventoryPrice twentyfourhours;
+    private JsonObject twentyfourhours;
     @JsonProperty("7_days")
-    private SteamInventoryPrice sevenDays;
+    private JsonObject sevenDays;
     @JsonProperty("30_days")
-    private SteamInventoryPrice thirtyDays;
+    private JsonObject thirtyDays;
     @JsonProperty("all_time")
-    private SteamInventoryPrice allTime;
+    private JsonObject allTime;
 
-    public SteamInventoryPrice getSevenDays() {
-        return sevenDays;
-    }
-
-    public void setSevenDays(SteamInventoryPrice sevenDays) {
-        this.sevenDays = sevenDays;
-    }
-
-    public SteamInventoryPrice getTwentyfourhours() {
+    public JsonObject getTwentyfourhours() {
         return twentyfourhours;
     }
 
-    public void setTwentyfourhours(SteamInventoryPrice twentyfourhours) {
+    public void setTwentyfourhours(JsonObject twentyfourhours) {
         this.twentyfourhours = twentyfourhours;
     }
 
-    public SteamInventoryPrice getThirtyDays() {
+    public JsonObject getSevenDays() {
+        return sevenDays;
+    }
+
+    public void setSevenDays(JsonObject sevenDays) {
+        this.sevenDays = sevenDays;
+    }
+
+    public JsonObject getThirtyDays() {
         return thirtyDays;
     }
 
-    public void setThirtyDays(SteamInventoryPrice thirtyDays) {
+    public void setThirtyDays(JsonObject thirtyDays) {
         this.thirtyDays = thirtyDays;
     }
 
-    public SteamInventoryPrice getAllTime() {
+    public JsonObject getAllTime() {
         return allTime;
     }
 
-    public void setAllTime(SteamInventoryPrice allTime) {
+    public void setAllTime(JsonObject allTime) {
         this.allTime = allTime;
     }
 

@@ -5,18 +5,17 @@
  */
 package org.csgo.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.csgo.repository.entity.SteamInventoryAll;
-import org.csgo.repository.entity.SteamInventoryItem;
-import org.csgo.repository.entity.SteamInventoryPriceTime;
+import org.csgo.repository.entity.SteamInventoryItemEntity;
+import org.csgo.repository.entity.SteamInventoryItemFromApi;
+import org.csgo.repository.entity.SteamInventoryPrice;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Map;
 
 @Service
 public class SteamService {
@@ -41,14 +40,31 @@ public class SteamService {
         Iterator iterator = responseEntity.getBody().getItemsList().iterator();
 
         while (iterator.hasNext()) {
-            System.out.println("Iterator: " + iterator.next().toString());
-            SteamInventoryItem steamInventoryItem = gson.fromJson(iterator.next().toString(), SteamInventoryItem.class);
-            if (steamInventoryItem != null) {
-                System.out.println("Price: " + steamInventoryItem.getPrice().toString());
+            SteamInventoryItemEntity steamInventoryItemEntity = new SteamInventoryItemEntity();
+            try{
+                SteamInventoryItemFromApi steamInventoryItemFromApi = gson.fromJson(iterator.next().toString(), SteamInventoryItemFromApi.class);
+                steamInventoryItemEntity.setName(steamInventoryItemFromApi.getName());
+                steamInventoryItemEntity.setClassid(steamInventoryItemFromApi.getClassid());
+                steamInventoryItemEntity.setIcon_url(steamInventoryItemFromApi.getIcon_url());
+                if (steamInventoryItemFromApi.getPrice() != null) {
+                    try {
+                        if (!steamInventoryItemFromApi.getPrice().get("7_days").isJsonNull()){
+                            SteamInventoryPrice steamInventoryPrice = gson.fromJson(steamInventoryItemFromApi.getPrice().get("7_days"), SteamInventoryPrice.class);
+                            steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
+                        }
+                    } catch (Exception e){
+                        SteamInventoryPrice steamInventoryPrice = gson.fromJson(steamInventoryItemFromApi.getPrice().get("all_time"), SteamInventoryPrice.class);
+                        steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
+                    }
+                    System.out.println(steamInventoryItemEntity.toString());
+                }
+            } catch (Exception e) {
+                System.out.println("Exception: " + iterator.next().toString());
             }
+
             //System.out.println(steamInventoryPriceTime.getSevenDays());
-            //System.out.println(steamInventoryItem.getName() + " " + steamInventoryItem.getClassid());
-            //System.out.println(steamInventoryItem.getPrice());
+            //System.out.println(steamInventoryItemFromApi.getName() + " " + steamInventoryItemFromApi.getClassid());
+            //System.out.println(steamInventoryItemFromApi.getPrice());
         }
     }
 
