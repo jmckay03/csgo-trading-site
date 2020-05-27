@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4ac22258-ad09-4927-b764-c052380e2bb9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/controller/BackEndService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/controller/BackEndService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryAll.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/configuration/SecurityWebConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/controller/BackEndService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/controller/BackEndService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/controller/WebPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/controller/WebPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/model/UserOpenIds.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/model/UserOpenIds.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/csgo/service/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/csgo/service/CustomUserDetailsService.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="44" column="68" selection-start-line="44" selection-start-column="68" selection-end-line="44" selection-end-column="68" />
+            <state relative-caret-position="27">
+              <caret line="27" column="98" selection-start-line="27" selection-start-column="98" selection-end-line="27" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,25 +28,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-              <folding>
-                <element signature="e#178#179#0" expanded="true" />
-                <element signature="e#205#206#0" expanded="true" />
-                <element signature="e#369#370#0" expanded="true" />
-                <element signature="e#415#416#0" expanded="true" />
-                <element signature="e#453#454#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/controller/BackEndService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
+            <state relative-caret-position="160">
               <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -116,6 +90,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/service/InventoryDeserializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryAll.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryPriceTime.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryPrice.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java" />
       </list>
     </option>
@@ -217,7 +193,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590551290937" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590553707032" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ez-stats" />
   </component>
   <component name="RecentsManager">
@@ -428,19 +404,19 @@
       <updated>1590357687041</updated>
       <workItem from="1590357688264" duration="2279000" />
       <workItem from="1590360627539" duration="21706000" />
-      <workItem from="1590544428895" duration="6633000" />
+      <workItem from="1590544428895" duration="9253000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40277000" />
+    <option name="totallyTimeSpent" value="42897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Web" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25566342" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23220065" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -452,14 +428,14 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.44227353" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36056837" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40674955" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4582593" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3285968" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49919093" weight="0.27175844" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5008091" side_tool="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3285968" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -485,9 +461,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java</url>
-          <line>38</line>
+          <line>42</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -546,7 +528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -715,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.2.RELEASE/spring-web-5.2.2.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryAll.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -735,23 +709,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#205#206#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#453#454#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/controller/BackEndService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
+        <state relative-caret-position="160">
           <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -759,10 +719,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryPriceTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding>
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryPrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1330#1331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/repository/entity/SteamInventoryItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.2.RELEASE/spring-web-5.2.2.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/csgo/service/SteamService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="44" column="68" selection-start-line="44" selection-start-column="68" selection-end-line="44" selection-end-column="68" />
+        <state relative-caret-position="27">
+          <caret line="27" column="98" selection-start-line="27" selection-start-column="98" selection-end-line="27" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
