@@ -60,4 +60,16 @@ public class SteamInventoryPrice {
     public void setHighest_price(String highest_price) {
         this.highest_price = highest_price;
     }
+
+    @Override
+    public String toString() {
+        return "SteamInventoryPrice{" +
+                "average='" + average + '\'' +
+                ", median='" + median + '\'' +
+                ", sold='" + sold + '\'' +
+                ", standard_deviation='" + standard_deviation + '\'' +
+                ", lowest_price='" + lowest_price + '\'' +
+                ", highest_price='" + highest_price + '\'' +
+                '}';
+    }
 }

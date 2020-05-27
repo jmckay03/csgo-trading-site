@@ -25,7 +25,7 @@ public class SteamService {
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
     // https://steamcommunity-a.akamaihd.net/economy/image/*image here*
 
-    private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes&no_prices=true";
+    private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes";
 
     //Cache if called every hour...
     public void steamCacheInventory() throws Exception{
@@ -41,10 +41,13 @@ public class SteamService {
         Iterator iterator = responseEntity.getBody().getItemsList().iterator();
 
         while (iterator.hasNext()) {
+            System.out.println("Iterator: " + iterator.next().toString());
             SteamInventoryItem steamInventoryItem = gson.fromJson(iterator.next().toString(), SteamInventoryItem.class);
-            //SteamInventoryPriceTime steamInventoryPriceTime = gson.fromJson(steamInventoryItem.getPrice().iterator().next().toString(), SteamInventoryPriceTime.class);
+            if (steamInventoryItem != null) {
+                System.out.println("Price: " + steamInventoryItem.getPrice().toString());
+            }
             //System.out.println(steamInventoryPriceTime.getSevenDays());
-            System.out.println(steamInventoryItem.getName() + " " + steamInventoryItem.getClassid());
+            //System.out.println(steamInventoryItem.getName() + " " + steamInventoryItem.getClassid());
             //System.out.println(steamInventoryItem.getPrice());
         }
     }
