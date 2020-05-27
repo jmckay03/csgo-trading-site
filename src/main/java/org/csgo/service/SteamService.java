@@ -56,6 +56,7 @@ public class SteamService {
                         SteamInventoryPrice steamInventoryPrice = gson.fromJson(steamInventoryItemFromApi.getPrice().get("all_time"), SteamInventoryPrice.class);
                         steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
                     }
+                    //Save to DB from here...Add Time?
                     System.out.println(steamInventoryItemEntity.toString());
                 }
             } catch (Exception e) {
