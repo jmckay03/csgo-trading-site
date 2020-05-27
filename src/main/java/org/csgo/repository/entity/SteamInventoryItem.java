@@ -1,6 +1,8 @@
 package org.csgo.repository.entity;
 
-public class SteamInventoryItem {
+import java.io.Serializable;
+
+public class SteamInventoryItem implements Serializable{
     private String name;
 
     public String getName() {

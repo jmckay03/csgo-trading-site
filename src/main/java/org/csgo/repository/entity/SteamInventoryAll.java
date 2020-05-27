@@ -1,12 +1,16 @@
 package org.csgo.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class SteamInventoryAll {
+public class SteamInventoryAll implements Serializable {
     private String success;
     private String currency;
     private String timestamp;
-    private List<SteamInventoryItem> itemlist;
+    @JsonProperty("items_list")
+    private Object itemsList;
 
     public String getSuccess() {
         return success;
@@ -32,11 +36,11 @@ public class SteamInventoryAll {
         this.timestamp = timestamp;
     }
 
-    public List<SteamInventoryItem> getItemlist() {
-        return itemlist;
+    public Object getItemsList() {
+        return itemsList;
     }
 
-    public void setItemlist(List<SteamInventoryItem> itemlist) {
-        this.itemlist = itemlist;
+    public void setItemsList(Object itemsList) {
+        this.itemsList = itemsList;
     }
 }
