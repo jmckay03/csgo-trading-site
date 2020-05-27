@@ -3,36 +3,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head lang="en">
     <meta charset="UTF-8"/>
-    <title>CSGO Trade</title>
+    <title>DBI Trades</title>
     <link href="/css/app.css" rel="stylesheet">
 </head>
+<div id="header">
+    <div id="logo">
+        DBI Trades
+    </div>
+    <div id="header-right">
+        <nav sec:authorize="isAnonymous()">
+            <ul class="member-actions">
+                <form name="form" th:action="@{/login/openid}" method="post">
 
-<header>
-<div class="overlay">
-    <h1>CSGO Trading</h1>
-    <h3>The ultimate place to trade your skins.</h3>
-    <p>Welcome to the easiest method to trade in your csgo stats!</p>
-    <br></br>
+                    <div id="openid_input_area">
+                        <input id="openid_identifier" name="openid_identifier" type="hidden"
+                               value="http://steamcommunity.com/openid"/>
+                        <input id="openid_submit" type="image"  th:src="@{https://steamcommunity-a.akamaihd.net/public/shared/images/signinthroughsteam/sits_landing.png}"/>
+                    </div>
 
-    <nav sec:authorize="isAnonymous()">
-        <ul class="member-actions">
-            <form name="form" th:action="@{/login/openid}" method="post">
-
-                <div id="openid_input_area">
-                    <input id="openid_identifier" name="openid_identifier" type="hidden"
-                           value="http://steamcommunity.com/openid"/>
-                    <input id="openid_submit" type="image" th:src="@{https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_01.png}"/>
-                </div>
-
-            </form>
-        </ul>
-    </nav>
-
+                </form>
+            </ul>
+        </nav>
+    </div>
 </div>
-</header>
+<div id="subheader">
+    <div id="tagline">
+        The ultimate CS:GO item trading site
+    </div>
+    <div id="subheader-right">
+    </div>
+</div>
 <body>
 <div className="body">
-    <p>Coming soon.</p>
+<p>Coming soon...</p>
 </div>
 
 </body>
