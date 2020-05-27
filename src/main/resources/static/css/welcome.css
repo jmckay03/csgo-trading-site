@@ -26,20 +26,20 @@ header .body{
   background-color: darkblue;
 }
 h2 {
-  font-family: Cambria;
-  padding-left: 50px;
+  font-family: Helvetica;
+
   font-size: 30px;
   text-shadow: 1px 1px 1px white;
 }
 
 h1 {
-  font-family: 'Dancing Script', cursive;
+  font-family: Helvetica, cursive;
   font-size: 80px;
   margin-bottom: 30px;
 }
 
 h3{
-  font-family: 'Open Sans', sans-serif;
+  font-family: Helvetica, sans-serif;
   margin-bottom: 30px;
 }
 
