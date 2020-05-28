@@ -29,4 +29,11 @@ databaseChangeLog:
         lastlogoff char(50)
         ) ENGINE=InnoDB;
 
+        create table Steam_Inventory_Item_Entity(
+        name varchar(100),
+        classId varchar(25),
+        icon_url varchar(256),
+        avg_price varchar(25)
+        ) ENGINE=InnoDB;
+
       comment: Initial create of the user table

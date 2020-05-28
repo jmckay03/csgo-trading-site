@@ -1,9 +1,21 @@
 package org.csgo.repository.entity;
 
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Jeffrey on 5/27/2020.
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
 public class SteamInventoryItemEntity {
+    @Id
     private String name;
     private String classid;
     private String icon_url;

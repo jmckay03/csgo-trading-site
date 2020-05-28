@@ -6,10 +6,12 @@
 package org.csgo.service;
 
 import com.google.gson.Gson;
+import org.csgo.repository.SteamInventoryItemRepository;
 import org.csgo.repository.entity.SteamInventoryAll;
 import org.csgo.repository.entity.SteamInventoryItemEntity;
 import org.csgo.repository.entity.SteamInventoryItemFromApi;
 import org.csgo.repository.entity.SteamInventoryPrice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +25,9 @@ public class SteamService {
 
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
     // https://steamcommunity-a.akamaihd.net/economy/image/*image here*
+
+    @Autowired
+    SteamInventoryItemRepository steamInventoryItemRepository;
 
     private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes";
 
@@ -57,17 +62,18 @@ public class SteamService {
                         steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
                     }
                     //Save to DB from here...Add Time?
-                    System.out.println(steamInventoryItemEntity.toString());
+                    steamInventoryItemRepository.save(steamInventoryItemEntity);
+                    //System.out.println(steamInventoryItemEntity.toString());
                 }
             } catch (Exception e) {
                 System.out.println("Exception: " + iterator.next().toString());
             }
-
-            //System.out.println(steamInventoryPriceTime.getSevenDays());
-            //System.out.println(steamInventoryItemFromApi.getName() + " " + steamInventoryItemFromApi.getClassid());
-            //System.out.println(steamInventoryItemFromApi.getPrice());
         }
     }
+
+    //Next we are going to be building up our inventory to check estimated steam inventory worth? /welcome
+    //Random skin with similar value? /welcome
+    // Getting all of your inventory /inventory
 
     public void steamPriceCheckAllInventory(String steamId){
         //fill in
