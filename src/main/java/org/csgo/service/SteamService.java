@@ -31,9 +31,6 @@ public class SteamService {
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
     // https://steamcommunity-a.akamaihd.net/economy/image/*image here*
 
-    @Autowired
-    SteamInventoryItemRepository steamInventoryItemRepository;
-
     private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes";
 
     //Cache if called every hour...
