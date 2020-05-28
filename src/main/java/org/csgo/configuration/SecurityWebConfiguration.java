@@ -49,7 +49,7 @@ public class SecurityWebConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticationUserDetailsService(authenticationUserDetailsService())
                 .successHandler(authenticationSuccessHandler)
                 .failureUrl("/?fail")
-                .and()
+                .and().headers().frameOptions().disable().and()
                 .csrf().disable();
     }
 
