@@ -29,7 +29,6 @@ databaseChangeLog:
         lastlogoff char(50)
         ) ENGINE=InnoDB;
 
-
       comment: Initial create of the user table
 
   - changeSet:

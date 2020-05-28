@@ -2,14 +2,20 @@ package org.csgo.repository.entity;
 
 import lombok.*;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
+=======
+>>>>>>> master
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * Created by Jeffrey on 5/27/2020.
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
