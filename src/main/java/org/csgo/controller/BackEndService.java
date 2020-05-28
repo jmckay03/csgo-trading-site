@@ -17,8 +17,8 @@ public class BackEndService {
     @Autowired
     private SteamService steamService;
 
-    @GetMapping("/test")
-    public void getOidcUserPrincipal() throws Exception {
+    @GetMapping("/load-data")
+    public void getAllInventoryItems() throws Exception {
         steamService.steamCacheInventory();
     }
 }

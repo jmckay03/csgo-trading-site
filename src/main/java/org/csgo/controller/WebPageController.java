@@ -3,7 +3,9 @@ package org.csgo.controller;
 
 
 import org.csgo.model.User;
+import org.csgo.repository.SteamInventoryItemRepository;
 import org.csgo.repository.SteamUserRepository;
+import org.csgo.repository.entity.SteamInventoryItemEntity;
 import org.csgo.repository.entity.SteamUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,6 +30,9 @@ public class WebPageController {
     @Autowired
     SteamUserRepository steamUserRepository;
 
+    @Autowired
+    SteamInventoryItemRepository steamInventoryItemRepository;
+
 
     @GetMapping("/")
     public String getHomePage() {
@@ -46,6 +51,18 @@ public class WebPageController {
             model.addAttribute("avatar", steamUserEntityList.get(0).getAvatarmedium());
         }
         return "welcome";
+    }
+    @GetMapping("/search")
+    public String search(ModelMap model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String nickName = ((User)principal).getUsername();
+        String id = ((User)principal).getId().toString();
+
+        if (principal != null) {
+            Iterable<SteamInventoryItemEntity> steamInventoryItemEntities = steamInventoryItemRepository.findAll();
+            model.addAttribute("inventory", steamInventoryItemEntities);
+        }
+        return "search";
     }
 
 }

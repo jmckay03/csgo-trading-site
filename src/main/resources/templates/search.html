@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>DBI Trades</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="/css/welcome.css" rel="stylesheet">
+    <link href="/css/search.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -26,8 +26,7 @@
 </nav>
 <div class="overlay">
 
-    <center> <h2> Welcome, [[${name}]]!</h2> </center>
-    <center> <h3>You have been successfully authenticated!</h3> </center>
+    <center> <h3>Click on a skin to search!</h3> </center>
     <p>To do add stuff.... make css better</p>
 
 
@@ -35,8 +34,30 @@
 </header>
 <body>
 <div className="body">
-    <p>Coming soon.</p>
-</div>
+    <table>
+        <thead>
+        <tr>
+            <th> Name </th>
+        </tr>
+        </thead>
+        <tbody>
 
-</body>
-</html>
+        <tr th:each="item : ${inventory}">
+            <td>
+            <div class="img__wrap">
+                <img class="img__img" th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" />
+                <div class="img__description_layer">
+                    <p class="img__description" th:text="${item.name}" > </p>
+                </div>
+            </div>
+            </td>
+            <!--<td><span th:text="${item.name}"> Item Name </span></td>
+            <img th:src="@{{image}(image=${item.icon_url})}">
+            <!-- <td><span th:text="${item.icon_url}"> URL </span></td>-->
+         </tr>
+         </tbody>
+     </table>
+ </div>
+
+ </body>
+ </html>
