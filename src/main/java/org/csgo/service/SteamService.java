@@ -6,19 +6,23 @@
 package org.csgo.service;
 
 import com.google.gson.Gson;
-import org.csgo.repository.entity.SteamInventoryAll;
-import org.csgo.repository.entity.SteamInventoryItemEntity;
-import org.csgo.repository.entity.SteamInventoryItemFromApi;
-import org.csgo.repository.entity.SteamInventoryPrice;
+import org.csgo.repository.entity.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.csgo.repository.SteamInventoryItemRepository;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SteamService {
+    @Autowired
+    private SteamInventoryItemRepository steamInventoryItemRepository;
+
     Gson gson = new Gson();
 
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
@@ -28,7 +32,6 @@ public class SteamService {
 
     //Cache if called every hour...
     public void steamCacheInventory() throws Exception{
-
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType(MediaType.valueOf("text/html; charset=UTF-8"));
@@ -45,7 +48,7 @@ public class SteamService {
                 SteamInventoryItemFromApi steamInventoryItemFromApi = gson.fromJson(iterator.next().toString(), SteamInventoryItemFromApi.class);
                 steamInventoryItemEntity.setName(steamInventoryItemFromApi.getName());
                 steamInventoryItemEntity.setClassid(steamInventoryItemFromApi.getClassid());
-                steamInventoryItemEntity.setIcon_url(steamInventoryItemFromApi.getIcon_url());
+                steamInventoryItemEntity.setIcon_url("https://steamcommunity-a.akamaihd.net/economy/image/"+steamInventoryItemFromApi.getIcon_url());
                 if (steamInventoryItemFromApi.getPrice() != null) {
                     try {
                         if (!steamInventoryItemFromApi.getPrice().get("7_days").isJsonNull()){
@@ -58,6 +61,8 @@ public class SteamService {
                     }
                     //Save to DB from here...Add Time?
                     System.out.println(steamInventoryItemEntity.toString());
+                    steamInventoryItemRepository.save(steamInventoryItemEntity);
+
                 }
             } catch (Exception e) {
                 System.out.println("Exception: " + iterator.next().toString());

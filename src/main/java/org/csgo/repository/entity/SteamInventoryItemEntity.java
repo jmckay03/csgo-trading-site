@@ -1,12 +1,27 @@
 package org.csgo.repository.entity;
 
+import lombok.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Jeffrey on 5/27/2020.
  */
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
 public class SteamInventoryItemEntity {
+    @Id
     private String name;
     private String classid;
     private String icon_url;
+    @Column(name = "Avg_Price")
     private String avgPrice;
 
     public String getName() {
@@ -46,7 +61,7 @@ public class SteamInventoryItemEntity {
         return "SteamInventoryItemEntity{" +
                 "name='" + name + '\'' +
                 ", classid='" + classid + '\'' +
-                ", icon_url='" + icon_url + '\'' +
+                ", icon_url='https://steamcommunity-a.akamaihd.net/economy/image/" + icon_url + '\'' +
                 ", avgPrice='" + avgPrice + '\'' +
                 '}';
     }

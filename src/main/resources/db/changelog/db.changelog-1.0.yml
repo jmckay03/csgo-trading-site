@@ -29,4 +29,16 @@ databaseChangeLog:
         lastlogoff char(50)
         ) ENGINE=InnoDB;
 
+
       comment: Initial create of the user table
+
+  - changeSet:
+      dbms: h2, mysql
+      id: USER-CREATE
+      author: Jon
+      sql: CREATE TABLE STEAM_INVENTORY_ITEM_ENTITY (
+        NAME char(100),
+        classid char(100),
+        icon_url char(512),
+        Avg_Price char(100)
+        )ENGINE=InnoDB;
