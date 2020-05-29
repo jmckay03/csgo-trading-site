@@ -6,6 +6,7 @@
 package org.csgo.service;
 
 import com.google.gson.Gson;
+import org.csgo.model.SteamRGInventoryAndDescriptions;
 import org.csgo.repository.SteamInventoryItemRepository;
 import org.csgo.repository.entity.SteamInventoryAll;
 import org.csgo.repository.entity.SteamInventoryItemEntity;
@@ -76,7 +77,22 @@ public class SteamService {
     //Random skin with similar value? /welcome
     // Getting all of your inventory /inventory
 
-    public void steamPriceCheckAllInventory(String steamId){
-        //fill in
+    public String steamPriceCheckAllInventory(String steamId){
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.valueOf("text/html; charset=UTF-8"));
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
+        RestTemplate restTemplate = new RestTemplate();
+        //Coming in as an object....
+        ResponseEntity<SteamRGInventoryAndDescriptions> responseEntity = restTemplate.exchange("https://steamcommunity.com/profiles/" + steamId + "/inventory/json/730/2", HttpMethod.GET, entity, SteamRGInventoryAndDescriptions.class);
+
+        Iterator iteratorInventory = responseEntity.getBody().getRgInventory().iterator();
+        Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
+
+        System.out.println(iteratorInventory.next().toString());
+
+        return iteratorDescriptions.next().toString();
+
     }
 }
