@@ -1,7 +1,7 @@
 package org.csgo.repository;
 
 import org.csgo.repository.entity.SteamInventoryItemEntity;
-import org.csgo.repository.entity.SteamUserEntity;
+import org.csgo.repository.entity.SteamInventoryUserItemsEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +12,7 @@ import java.util.List;
  */
 
 @Repository
-public interface SteamInventoryItemRepository extends CrudRepository<SteamInventoryItemEntity, String>{
-    SteamInventoryItemEntity findByClassid(String classId);
+public interface SteamInventoryUserItemsRepository extends CrudRepository<SteamInventoryUserItemsEntity, String>{
+    List<SteamInventoryUserItemsEntity> findAllBySteamId(String steamId);
+
 }

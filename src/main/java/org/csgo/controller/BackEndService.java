@@ -25,9 +25,9 @@ public class BackEndService {
     }
 
     @GetMapping("/user-data")
-    public String getUserInventoryItems() throws Exception {
+    public void getUserInventoryItems() throws Exception {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String id = ((User)principal).getId().toString();
-        return steamService.steamPriceCheckAllInventory(id);
+        //return steamService.steamPriceCheckAllInventory(id);
     }
 }

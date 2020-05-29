@@ -7,11 +7,10 @@ package org.csgo.service;
 
 import com.google.gson.Gson;
 import org.csgo.model.SteamRGInventoryAndDescriptions;
+import org.csgo.model.SteamRgInventoryOnly;
 import org.csgo.repository.SteamInventoryItemRepository;
-import org.csgo.repository.entity.SteamInventoryAll;
-import org.csgo.repository.entity.SteamInventoryItemEntity;
-import org.csgo.repository.entity.SteamInventoryItemFromApi;
-import org.csgo.repository.entity.SteamInventoryPrice;
+import org.csgo.repository.SteamInventoryUserItemsRepository;
+import org.csgo.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,9 @@ import java.util.Optional;
 public class SteamService {
     @Autowired
     private SteamInventoryItemRepository steamInventoryItemRepository;
+
+    @Autowired
+    private SteamInventoryUserItemsRepository steamInventoryUserItemsRepository;
 
     Gson gson = new Gson();
 
@@ -77,7 +79,7 @@ public class SteamService {
     //Random skin with similar value? /welcome
     // Getting all of your inventory /inventory
 
-    public String steamPriceCheckAllInventory(String steamId){
+    public List<SteamInventoryUserItemsEntity> steamPriceCheckAllInventory(String steamId){
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -88,11 +90,29 @@ public class SteamService {
         ResponseEntity<SteamRGInventoryAndDescriptions> responseEntity = restTemplate.exchange("https://steamcommunity.com/profiles/" + steamId + "/inventory/json/730/2", HttpMethod.GET, entity, SteamRGInventoryAndDescriptions.class);
 
         Iterator iteratorInventory = responseEntity.getBody().getRgInventory().iterator();
-        Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
+        //Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
 
-        System.out.println(iteratorInventory.next().toString());
+        //TODO add time, updates every 3 hours if user calls again...Saves to user db
+        while (iteratorInventory.hasNext()) {
+            SteamRgInventoryOnly steamRgInventoryOnly = gson.fromJson(iteratorInventory.next().toString(), SteamRgInventoryOnly.class);
+            SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByClassid(steamRgInventoryOnly.getClassid());
+            //TODO Get inspect and save...
+            try {
+                System.out.println(steamInventoryItemEntity.toString());
+                steamInventoryUserItemsRepository.save(SteamInventoryUserItemsEntity.builder()
+                        .steamId(steamId)
+                        .classId(steamInventoryItemEntity.getClassid())
+                        .name(steamInventoryItemEntity.getName())
+                        .icon_url(steamInventoryItemEntity.getIcon_url())
+                        .avgPrice(steamInventoryItemEntity.getAvgPrice())
+                        .build());
+            } catch (Exception e) {
+                System.out.println("Error!");
+            }
 
-        return iteratorDescriptions.next().toString();
+        }
+
+        return steamInventoryUserItemsRepository.findAllBySteamId(steamId);
 
     }
 }

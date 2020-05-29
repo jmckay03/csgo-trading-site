@@ -6,7 +6,9 @@ import org.csgo.model.User;
 import org.csgo.repository.SteamInventoryItemRepository;
 import org.csgo.repository.SteamUserRepository;
 import org.csgo.repository.entity.SteamInventoryItemEntity;
+import org.csgo.repository.entity.SteamInventoryUserItemsEntity;
 import org.csgo.repository.entity.SteamUserEntity;
+import org.csgo.service.SteamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -32,6 +34,9 @@ public class WebPageController {
 
     @Autowired
     SteamInventoryItemRepository steamInventoryItemRepository;
+
+    @Autowired
+    SteamService steamService;
 
 
     @GetMapping("/")
@@ -63,6 +68,18 @@ public class WebPageController {
             model.addAttribute("inventory", steamInventoryItemEntities);
         }
         return "search";
+    }
+
+    @GetMapping("/inventory")
+    public String inventory(ModelMap model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String id = ((User)principal).getId().toString();
+
+        if (principal != null) {
+            List<SteamInventoryUserItemsEntity> inventory = steamService.steamPriceCheckAllInventory(id);
+            model.addAttribute("inventory", inventory);
+        }
+        return "inventory";
     }
 
 }

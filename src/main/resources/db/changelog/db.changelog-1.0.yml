@@ -41,3 +41,13 @@ databaseChangeLog:
         icon_url char(512),
         Avg_Price char(100)
         )ENGINE=InnoDB;
+
+        CREATE TABLE STEAM_INVENTORY_USER_ITEMS_ENTITY (
+                UUID char(255),
+                STEAM_ID char(100),
+                NAME char(100),
+                class_id char(100),
+                icon_url char(512),
+                Avg_Price char(100),
+                INSPECT char(256)
+                )ENGINE=InnoDB;
