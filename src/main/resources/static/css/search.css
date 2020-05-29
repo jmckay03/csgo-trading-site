@@ -89,64 +89,45 @@ button:hover{
   transition: opacity .2s, visibility .2s;
 }
 
-.img__wrap:hover .img__description_layer {
-  visibility: visible;
-  opacity: 1;
+{
+box-sizing: border-box;
 }
 
-.img__description {
-  transition: .2s;
-  transform: translateY(1em);
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.img__wrap:hover .img__description {
-  transform: translateY(0);
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px 10px;
 }
 
-.flex-container {
-  /* We first create a flex layout context */
-  display: flex;
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
 
-  /* Then we define the flow direction
-     and if we allow the items to wrap
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   */
-  flex-flow: row wrap;
-
-  /* Then we define how is distributed the remaining space */
-  justify-content: space-around;
-
-  padding: 0;
-  margin: 0;
-  list-style: none;
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.flex-item {
-  background: whitesmoke;
-  padding: 5px;
-  width: 200px;
-  height: 150px;
-  margin-top: 10px;
-  line-height: 150px;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
   text-align: center;
+  background-color: #f1f1f1;
 }
 
-.info-container{
-  display: inline-block;
-  vertical-align: top;
-  padding: 0 0 0 5px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.info-container p{
-  padding: 0;
-  margin: 0 0 10px;
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
 

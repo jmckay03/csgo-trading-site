@@ -35,7 +35,18 @@
 <body>
 
 
+<div class="row">
+    <tr th:each="item : ${inventory}">
+    <div class="column">
+        <div class="card">
+            <h6 th:text="${item.name}">Card 1</h6>
+            <img th:src="@{{image}(image=${item.icon_url})}" style="width:75px;height:75px;" />
+        </div>
+    </div>
+    </tr>
+</div>
 
+<!--
 <div className="body">
     <ul class="flex-container">
         <tr th:each="item : ${inventory}">
@@ -47,28 +58,8 @@
                  </li>
         </tr>
     </ul>
-<!--
-    <table>
-        <thead>
-        <tr>
-            <th> Name </th>
-        </tr>
-        </thead>
-        <tbody>
 
-        <tr th:each="item : ${inventory}">
-            <td>
-            <div class="flex-container">
-                <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" />
-            </div>
-            </td>
-            <td><span th:text="${item.name}"> Item Name </span></td>
-            <img th:src="@{{image}(image=${item.icon_url})}">
-             <td><span th:text="${item.icon_url}"> URL </span></td>
-         </tr>
-         </tbody>
-     </table> -->
- </div>
+ </div> -->
 
  </body>
  </html>
