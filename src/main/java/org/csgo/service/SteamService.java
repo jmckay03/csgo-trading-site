@@ -6,6 +6,7 @@
 package org.csgo.service;
 
 import com.google.gson.Gson;
+import org.apache.commons.lang3.StringUtils;
 import org.csgo.model.SteamRGInventoryAndDescriptions;
 import org.csgo.model.SteamRgDescriptionOnly;
 import org.csgo.model.SteamRgInventoryOnly;
@@ -108,7 +109,7 @@ public class SteamService {
                             .name(steamInventoryItemEntity.getName())
                             .icon_url(steamInventoryItemEntity.getIcon_url())
                             .avgPrice(steamInventoryItemEntity.getAvgPrice())
-                            .inspect(steamRgDescriptionOnly.getActions().get(0).getAsJsonObject().get("link").getAsString())
+                            .inspect(steamRgDescriptionOnly.getActions().get(0).getAsJsonObject().get("link").getAsString().replace("%owner_steamid%", steamId).replace("%assetid%", steamRgInventoryOnly.getId()))
                             .marketInspect(steamRgDescriptionOnly.getMarket_actions().get(0).getAsJsonObject().get("link").getAsString())
                             .build());
                 } catch (Exception e) {
