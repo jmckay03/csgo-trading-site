@@ -49,5 +49,6 @@ databaseChangeLog:
                 class_id char(100),
                 icon_url char(512),
                 Avg_Price char(100),
-                INSPECT char(256)
+                INSPECT char(256),
+                MARKET_INSPECT char(256)
                 )ENGINE=InnoDB;

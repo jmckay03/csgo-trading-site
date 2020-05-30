@@ -29,6 +29,7 @@ public class SteamInventoryUserItemsEntity {
     private String icon_url;
     private String avgPrice;
     private String inspect;
+    private String marketInspect;
 
     public String getUuid() {
         return uuid;
@@ -84,5 +85,13 @@ public class SteamInventoryUserItemsEntity {
 
     public void setInspect(String inspect) {
         this.inspect = inspect;
+    }
+
+    public String getMarketInspect() {
+        return marketInspect;
+    }
+
+    public void setMarketInspect(String marketInspect) {
+        this.marketInspect = marketInspect;
     }
 }

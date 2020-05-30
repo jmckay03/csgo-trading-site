@@ -42,6 +42,7 @@
         <div class="card">
             <p th:text="${item.name}">Card 1</p>
             <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" class="center" />
+            <a th:href="${item.inspect}"><button>Inspect</button></a>
         </div>
     </div>
     </tr>

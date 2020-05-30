@@ -7,6 +7,7 @@ package org.csgo.service;
 
 import com.google.gson.Gson;
 import org.csgo.model.SteamRGInventoryAndDescriptions;
+import org.csgo.model.SteamRgDescriptionOnly;
 import org.csgo.model.SteamRgInventoryOnly;
 import org.csgo.repository.SteamInventoryItemRepository;
 import org.csgo.repository.SteamInventoryUserItemsRepository;
@@ -90,26 +91,30 @@ public class SteamService {
         ResponseEntity<SteamRGInventoryAndDescriptions> responseEntity = restTemplate.exchange("https://steamcommunity.com/profiles/" + steamId + "/inventory/json/730/2", HttpMethod.GET, entity, SteamRGInventoryAndDescriptions.class);
 
         Iterator iteratorInventory = responseEntity.getBody().getRgInventory().iterator();
-        //Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
+        Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
 
         //TODO add time, updates every 3 hours if user calls again...Saves to user db
-        while (iteratorInventory.hasNext()) {
+        while (iteratorInventory.hasNext() && iteratorDescriptions.hasNext()) {
             SteamRgInventoryOnly steamRgInventoryOnly = gson.fromJson(iteratorInventory.next().toString(), SteamRgInventoryOnly.class);
+            SteamRgDescriptionOnly steamRgDescriptionOnly = gson.fromJson(iteratorDescriptions.next().toString(), SteamRgDescriptionOnly.class);
             SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByClassid(steamRgInventoryOnly.getClassid());
             //TODO Get inspect and save...
-            try {
-                System.out.println(steamInventoryItemEntity.toString());
-                steamInventoryUserItemsRepository.save(SteamInventoryUserItemsEntity.builder()
-                        .steamId(steamId)
-                        .classId(steamInventoryItemEntity.getClassid())
-                        .name(steamInventoryItemEntity.getName())
-                        .icon_url(steamInventoryItemEntity.getIcon_url())
-                        .avgPrice(steamInventoryItemEntity.getAvgPrice())
-                        .build());
-            } catch (Exception e) {
-                System.out.println("Error!");
+            if (steamRgDescriptionOnly.getMarketable().equals("1")){
+                try {
+                    System.out.println(steamInventoryItemEntity.toString());
+                    steamInventoryUserItemsRepository.save(SteamInventoryUserItemsEntity.builder()
+                            .steamId(steamId)
+                            .classId(steamInventoryItemEntity.getClassid())
+                            .name(steamInventoryItemEntity.getName())
+                            .icon_url(steamInventoryItemEntity.getIcon_url())
+                            .avgPrice(steamInventoryItemEntity.getAvgPrice())
+                            .inspect(steamRgDescriptionOnly.getActions().get(0).getAsJsonObject().get("link").getAsString())
+                            .marketInspect(steamRgDescriptionOnly.getMarket_actions().get(0).getAsJsonObject().get("link").getAsString())
+                            .build());
+                } catch (Exception e) {
+                    System.out.println("Error!");
+                }
             }
-
         }
 
         return steamInventoryUserItemsRepository.findAllBySteamId(steamId);
