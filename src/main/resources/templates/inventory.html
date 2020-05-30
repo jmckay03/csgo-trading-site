@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>DBI Trades</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="/css/search.css" rel="stylesheet">
+    <link href="/css/inventory.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -27,7 +27,6 @@
 <div class="overlay">
 
     <center> <h3>My Inventory</h3> </center>
-    <p>To do add stuff.... make css better</p>
 
 
 </div>
@@ -35,12 +34,14 @@
 <body>
 
 
+
+<!-- LAST USED GOOD CODE!!! -->
 <div class="row">
     <tr th:each="item : ${inventory}">
     <div class="column">
         <div class="card">
-            <h6 th:text="${item.name}">Card 1</h6>
-            <img th:src="@{{image}(image=${item.icon_url})}" style="width:75px;height:75px;" />
+            <p th:text="${item.name}">Card 1</p>
+            <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" class="center" />
         </div>
     </div>
     </tr>
