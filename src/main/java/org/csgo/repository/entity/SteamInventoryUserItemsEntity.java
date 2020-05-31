@@ -27,7 +27,7 @@ public class SteamInventoryUserItemsEntity {
     @Column(name = "CLASS_ID")
     private String classId;
     private String icon_url;
-    private String avgPrice;
+    private Float avgPrice;
     private String inspect;
     private String marketInspect;
 
@@ -71,11 +71,11 @@ public class SteamInventoryUserItemsEntity {
         this.icon_url = icon_url;
     }
 
-    public String getAvgPrice() {
+    public Float getAvgPrice() {
         return avgPrice;
     }
 
-    public void setAvgPrice(String avgPrice) {
+    public void setAvgPrice(Float avgPrice) {
         this.avgPrice = avgPrice;
     }
 

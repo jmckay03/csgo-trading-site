@@ -4,6 +4,7 @@ package org.csgo.controller;
 
 import org.csgo.model.User;
 import org.csgo.repository.SteamInventoryItemRepository;
+import org.csgo.repository.SteamInventoryUserItemsRepository;
 import org.csgo.repository.SteamUserRepository;
 import org.csgo.repository.entity.SteamInventoryItemEntity;
 import org.csgo.repository.entity.SteamInventoryUserItemsEntity;
@@ -34,6 +35,9 @@ public class WebPageController {
 
     @Autowired
     SteamInventoryItemRepository steamInventoryItemRepository;
+
+    @Autowired
+    SteamInventoryUserItemsRepository steamInventoryUserItemsRepository;
 
     @Autowired
     SteamService steamService;
@@ -81,6 +85,7 @@ public class WebPageController {
         if (principal != null) {
             List<SteamInventoryUserItemsEntity> inventory = steamService.steamPriceCheckAllInventory(id);
             model.addAttribute("inventory", inventory);
+            model.addAttribute("value", steamInventoryUserItemsRepository.sumOfAvgPrice(id).toString());
         }
         return "inventory";
     }

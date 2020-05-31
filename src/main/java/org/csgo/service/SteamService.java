@@ -62,17 +62,17 @@ public class SteamService {
                     try {
                         if (!steamInventoryItemFromApi.getPrice().get("7_days").isJsonNull()){
                             SteamInventoryPrice steamInventoryPrice = gson.fromJson(steamInventoryItemFromApi.getPrice().get("7_days"), SteamInventoryPrice.class);
-                            steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
+                            steamInventoryItemEntity.setAvgPrice(Float.parseFloat(steamInventoryPrice.getAverage()));
                         }
                     } catch (Exception e){
                         SteamInventoryPrice steamInventoryPrice = gson.fromJson(steamInventoryItemFromApi.getPrice().get("all_time"), SteamInventoryPrice.class);
-                        steamInventoryItemEntity.setAvgPrice(steamInventoryPrice.getAverage());
+                        steamInventoryItemEntity.setAvgPrice(Float.parseFloat(steamInventoryPrice.getAverage()));
                     }
                     //Save to DB from here
                     steamInventoryItemRepository.save(steamInventoryItemEntity);
-                    //System.out.println(steamInventoryItemEntity.toString());
                 }
             } catch (Exception e) {
+                System.out.println(e);
                 System.out.println("Exception: " + iterator.next().toString());
             }
         }
@@ -100,7 +100,6 @@ public class SteamService {
             SteamRgInventoryOnly steamRgInventoryOnly = gson.fromJson(iteratorInventory.next().toString(), SteamRgInventoryOnly.class);
             SteamRgDescriptionOnly steamRgDescriptionOnly = gson.fromJson(iteratorDescriptions.next().toString(), SteamRgDescriptionOnly.class);
             SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByClassid(steamRgInventoryOnly.getClassid());
-            //TODO Fix Steam listing link
             //TODO Add Trade look up link
             if (steamRgDescriptionOnly.getMarketable().equals("1")){
                 try {

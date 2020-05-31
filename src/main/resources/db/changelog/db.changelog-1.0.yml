@@ -39,7 +39,7 @@ databaseChangeLog:
         NAME char(100),
         classid char(100),
         icon_url char(512),
-        Avg_Price char(100)
+        Avg_Price float
         )ENGINE=InnoDB;
 
         CREATE TABLE STEAM_INVENTORY_USER_ITEMS_ENTITY (
@@ -48,7 +48,7 @@ databaseChangeLog:
                 NAME char(100),
                 class_id char(100),
                 icon_url char(512),
-                Avg_Price char(100),
+                Avg_Price float,
                 INSPECT char(256),
                 MARKET_INSPECT char(256)
                 )ENGINE=InnoDB;
