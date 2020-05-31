@@ -18,10 +18,9 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.csgo.repository.SteamInventoryItemRepository;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+
+import java.sql.Timestamp;
+import java.util.*;
 
 @Service
 public class SteamService {
@@ -32,6 +31,7 @@ public class SteamService {
     private SteamInventoryUserItemsRepository steamInventoryUserItemsRepository;
 
     Gson gson = new Gson();
+    Date date = new Date();
 
     // https://steamcommunity.com/profiles/76561198034418818/inventory/json/730/2
     // https://steamcommunity-a.akamaihd.net/economy/image/*image here*
@@ -73,7 +73,8 @@ public class SteamService {
                 }
             } catch (Exception e) {
                 System.out.println(e);
-                System.out.println("Exception: " + iterator.next().toString());
+                steamInventoryItemEntity.setAvgPrice(Float.parseFloat("0.00"));
+                steamInventoryItemRepository.save(steamInventoryItemEntity);
             }
         }
     }
@@ -112,9 +113,10 @@ public class SteamService {
                             .avgPrice(steamInventoryItemEntity.getAvgPrice())
                             .inspect(steamRgDescriptionOnly.getActions().get(0).getAsJsonObject().get("link").getAsString().replace("%owner_steamid%", steamId).replace("%assetid%", steamRgInventoryOnly.getId()))
                             .marketInspect(csgoMarketUrl + steamInventoryItemEntity.getName())
+                            .dateTime(new Timestamp(date.getTime()))
                             .build());
                 } catch (Exception e) {
-                    System.out.println("Error!");
+                    System.out.println("Error:" + e);
                 }
             }
         }

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * Created by Jeffrey on 5/29/2020.
@@ -30,6 +31,7 @@ public class SteamInventoryUserItemsEntity {
     private Float avgPrice;
     private String inspect;
     private String marketInspect;
+    private Timestamp dateTime;
 
     public String getUuid() {
         return uuid;
@@ -93,5 +95,13 @@ public class SteamInventoryUserItemsEntity {
 
     public void setMarketInspect(String marketInspect) {
         this.marketInspect = marketInspect;
+    }
+
+    public Timestamp getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Timestamp dateTime) {
+        this.dateTime = dateTime;
     }
 }

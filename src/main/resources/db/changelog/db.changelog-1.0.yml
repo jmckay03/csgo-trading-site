@@ -50,5 +50,6 @@ databaseChangeLog:
                 icon_url char(512),
                 Avg_Price float,
                 INSPECT char(256),
-                MARKET_INSPECT char(256)
+                MARKET_INSPECT char(256),
+                DATE_TIME DATETIME not null
                 )ENGINE=InnoDB;
