@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>DBI Trades</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="/css/createTrade.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">DBI Trades</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/welcome">Home</a></li>
+            <li><a href="#">Current Trades</a></li>
+            <li><a href="/myTrades">My Trades</a></li>
+            <li><a href="/inventory">Inventory</a></li>
+            <li><a href="/search">Search</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="header">
+    <h2>Create a Trade</h2>
+    <br>
+</div>
+
+<input type="text" id="myInput" onkeyup="inventoryLookup()" placeholder="Search for items..">
+
+<body>
+<h4>Your Inventory</h4>
+<div class="row">
+    <tr th:each="item : ${inventory}">
+    <div class="column">
+        <div class="card">
+            <p th:text="${item.name}">Card 1</p>
+            <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" class="center" />
+            <p th:text="${item.avgPrice}">Price</p>
+        </div>
+    </div>
+    </tr>
+</div>
+<br>
+
+<div class="forBody">
+    <h5> Trade For: </h5>
+</div>
+
+<br>
+<h4>All Inventory</h4>
+<div class="row">
+    <tr th:each="item : ${defaultInventory}">
+        <div class="column">
+            <div class="card">
+                <p th:text="${item.name}">Card 1</p>
+                <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" class="center" />
+                <p th:text="${item.avgPrice}">Price</p>
+            </div>
+        </div>
+    </tr>
+</div>
+
+ </body>
+ </html>
+
+<script>
+    function inventoryLookup() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("row");
+        li = ul.getElementsByTagName('card');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("p")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>

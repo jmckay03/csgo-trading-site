@@ -11,15 +11,11 @@ import org.csgo.repository.entity.SteamInventoryUserItemsEntity;
 import org.csgo.repository.entity.SteamUserEntity;
 import org.csgo.service.SteamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.Principal;
 import java.util.List;
 
 
@@ -88,6 +84,23 @@ public class WebPageController {
             model.addAttribute("value", steamInventoryUserItemsRepository.sumOfAvgPrice(id).toString());
         }
         return "inventory";
+    }
+
+    @GetMapping("/myTrades")
+    public String myTrades(ModelMap model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String id = ((User)principal).getId().toString();
+        List<SteamUserEntity> steamUserEntityList = steamUserRepository.findBySteamid(id);
+        model.addAttribute("name", steamUserEntityList.get(0).getPersonaname());
+        model.addAttribute("avatar", steamUserEntityList.get(0).getAvatarmedium());
+
+        if (principal != null) {
+            List<SteamInventoryUserItemsEntity> inventory = steamService.steamPriceCheckAllInventory(id);
+            model.addAttribute("inventory", inventory);
+            Iterable<SteamInventoryItemEntity> defaultInventory = steamInventoryItemRepository.findAll();
+            model.addAttribute("defaultInventory", defaultInventory);
+        }
+        return "createTrade";
     }
 
 }
