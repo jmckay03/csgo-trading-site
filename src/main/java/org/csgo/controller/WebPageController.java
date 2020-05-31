@@ -74,6 +74,9 @@ public class WebPageController {
     public String inventory(ModelMap model) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String id = ((User)principal).getId().toString();
+        List<SteamUserEntity> steamUserEntityList = steamUserRepository.findBySteamid(id);
+        model.addAttribute("name", steamUserEntityList.get(0).getPersonaname());
+        model.addAttribute("avatar", steamUserEntityList.get(0).getAvatarmedium());
 
         if (principal != null) {
             List<SteamInventoryUserItemsEntity> inventory = steamService.steamPriceCheckAllInventory(id);

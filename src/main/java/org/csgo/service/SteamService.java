@@ -37,8 +37,9 @@ public class SteamService {
     // https://steamcommunity-a.akamaihd.net/economy/image/*image here*
 
     private String csgoBackpackUrl = "http://csgobackpack.net/api/GetItemsList/v2/?prettyprint=yes";
+    private String csgoMarketUrl = "https://steamcommunity.com/market/listings/730/";
 
-    //Cache if called every hour...
+    //TODO Call every day with spring scheduler
     public void steamCacheInventory() throws Exception{
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -99,7 +100,8 @@ public class SteamService {
             SteamRgInventoryOnly steamRgInventoryOnly = gson.fromJson(iteratorInventory.next().toString(), SteamRgInventoryOnly.class);
             SteamRgDescriptionOnly steamRgDescriptionOnly = gson.fromJson(iteratorDescriptions.next().toString(), SteamRgDescriptionOnly.class);
             SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByClassid(steamRgInventoryOnly.getClassid());
-            //TODO Get inspect and save...
+            //TODO Fix Steam listing link
+            //TODO Add Trade look up link
             if (steamRgDescriptionOnly.getMarketable().equals("1")){
                 try {
                     System.out.println(steamInventoryItemEntity.toString());
@@ -110,15 +112,13 @@ public class SteamService {
                             .icon_url(steamInventoryItemEntity.getIcon_url())
                             .avgPrice(steamInventoryItemEntity.getAvgPrice())
                             .inspect(steamRgDescriptionOnly.getActions().get(0).getAsJsonObject().get("link").getAsString().replace("%owner_steamid%", steamId).replace("%assetid%", steamRgInventoryOnly.getId()))
-                            .marketInspect(steamRgDescriptionOnly.getMarket_actions().get(0).getAsJsonObject().get("link").getAsString())
+                            .marketInspect(csgoMarketUrl + steamInventoryItemEntity.getName())
                             .build());
                 } catch (Exception e) {
                     System.out.println("Error!");
                 }
             }
         }
-
         return steamInventoryUserItemsRepository.findAllBySteamId(steamId);
-
     }
 }
