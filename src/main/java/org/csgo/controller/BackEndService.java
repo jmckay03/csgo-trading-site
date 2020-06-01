@@ -20,8 +20,9 @@ public class BackEndService {
     private SteamService steamService;
 
     @GetMapping("/load-data")
-    public void getAllInventoryItems() throws Exception {
+    public String getAllInventoryItems() throws Exception {
         steamService.steamCacheInventory();
+        return "Data is loaded";
     }
 
     @GetMapping("/user-data")
