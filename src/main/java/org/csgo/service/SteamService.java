@@ -96,11 +96,10 @@ public class SteamService {
         Iterator iteratorInventory = responseEntity.getBody().getRgInventory().iterator();
         Iterator iteratorDescriptions = responseEntity.getBody().getRgDescriptions().iterator();
 
-        //TODO add time, updates every 3 hours if user calls again...Saves to user db
         while (iteratorInventory.hasNext() && iteratorDescriptions.hasNext()) {
             SteamRgInventoryOnly steamRgInventoryOnly = gson.fromJson(iteratorInventory.next().toString(), SteamRgInventoryOnly.class);
             SteamRgDescriptionOnly steamRgDescriptionOnly = gson.fromJson(iteratorDescriptions.next().toString(), SteamRgDescriptionOnly.class);
-            SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByClassid(steamRgInventoryOnly.getClassid());
+            SteamInventoryItemEntity steamInventoryItemEntity = steamInventoryItemRepository.findByName(steamRgDescriptionOnly.getMarket_name());
             //TODO Add Trade look up link
             if (steamRgDescriptionOnly.getMarketable().equals("1")){
                 try {

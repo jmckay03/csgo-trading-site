@@ -88,7 +88,8 @@ body {
 /* Remove extra left and right margins, due to padding in columns */
 .row {
   margin: 0 -5px;
-  height: 300px;
+  height: 1000px;
+  width: 500px;
   overflow: auto
 }
 
@@ -182,16 +183,42 @@ p {
   display: inline-block;
 }
 
-.myInput {
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-  position: center;
-  display: flex;
+form {
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 30%;
 }
 
+input[type=search] {
+  border: solid 3px #fff;
+  box-sizing: border-box;
+  font-size: 2em;
+  height: 2em;
+  margin-left: -15vw;
+  outline: solid #fc0 0;
+  padding: .5em;
+  transition: all 2s ease-in;
+  width: 30vw;
+  z-index: 1;
+}
 
+.forBody {
+  alignment: center;
+}
+
+.myInventory {
+  float: left;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.allInventory{
+  float: right;
+}
+
+.all {
+  width: 100%;
+}

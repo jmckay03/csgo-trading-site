@@ -139,9 +139,7 @@ public class WebPageController {
                 model.addAttribute("defaultInventory", defaultInventory);
             }
 
-
         }
         return "createTrade";
     }
-
 }

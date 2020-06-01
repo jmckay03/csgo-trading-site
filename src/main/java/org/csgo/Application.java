@@ -15,8 +15,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 @Configuration
-@EnableAutoConfiguration
-@ComponentScan
 public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception{

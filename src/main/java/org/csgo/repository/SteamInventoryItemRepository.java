@@ -16,5 +16,6 @@ import java.util.List;
 @Repository
 public interface SteamInventoryItemRepository extends CrudRepository<SteamInventoryItemEntity, String>{
     SteamInventoryItemEntity findByClassid(String classId);
+    SteamInventoryItemEntity findByName(String name);
 
 }
