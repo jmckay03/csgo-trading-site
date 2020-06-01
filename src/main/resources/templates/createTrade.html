@@ -54,16 +54,16 @@
     </div>-->
 
 <div class="allInventory">
-<div class="row">
     <h4>All Inventory</h4>
     <br>
     <input type="text" id="myInput2" onkeyup="inventoryLookup2()" placeholder="Search for items..">
+<div class="row">
     <tr th:each="item : ${defaultInventory}">
         <div class="column">
             <div class="card">
                 <p th:text="${item.name}">Card 1</p>
-                <img th:src="@{{image}(image=${item.icon_url})}" style="width:100px;height:100px;" class="center" />
-                <p th:text="${item.avgPrice}">Price</p>
+                <img th:src="@{{image}(image=${item.icon_url})}" style="width:50px;height:50px;" class="center" />
+                <p>$[[${item.avgPrice}]]</p>
             </div>
         </div>
     </tr>
@@ -101,7 +101,7 @@
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById('myInput2');
         filter = input.value.toUpperCase();
-        ul = document.getElementsByClassName("row").item(0);
+        ul = document.getElementsByClassName("row").item(1);
         li = ul.getElementsByClassName('column');
 
         // Loop through all list items, and hide those who don't match the search query
