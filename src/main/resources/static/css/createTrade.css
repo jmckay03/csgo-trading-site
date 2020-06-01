@@ -183,13 +183,6 @@ p {
   display: inline-block;
 }
 
-form {
-  display: block;
-  left: 50%;
-  position: absolute;
-  top: 30%;
-}
-
 input[type=search] {
   border: solid 3px #fff;
   box-sizing: border-box;
@@ -201,6 +194,7 @@ input[type=search] {
   transition: all 2s ease-in;
   width: 30vw;
   z-index: 1;
+  float: left;
 }
 
 .forBody {
@@ -217,6 +211,10 @@ input[type=search] {
 
 .allInventory{
   float: right;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .all {
